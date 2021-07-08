@@ -76,6 +76,31 @@ export const socialReducer = (state, action) => {
   }
 };
 
+export const eventsReducer = (state, action) => {
+  switch (action.type) {
+    case 'LOADING':
+      return {
+        ...state,
+        loading: true,
+        error: false
+      };
+    case 'SUCCESS':
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        data: action.data,
+      };
+    case 'ERROR':
+      return {
+        ...state,
+        loading: false,
+        error: true,
+      };
+    default:
+      throw new Error();
+  }
+};
 export const eventReducer = (state, action) => {
   switch (action.type) {
     case 'LOADING':

@@ -1,38 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
-import {useGetSocial} from "./API/apiSite";
-import { useState } from "react";
+import React, { Suspense } from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from 'react-router-dom';
 
-function App() {
-  const [params, setParams] = useState({});
-  const [page, setPage] = useState(0);
-  const { data, loading, error, hasNextPage } = useGetSocial(params, page);
-  console.log("data", data);
-  console.log(loading);
-  console.log(error);
-  return (
-    <div className="App">
-          <ul>
-      {data.map(animal => (
-        <li>{animal.title}</li>
-      ))}
-    </ul>
-      <header className="App-header"> 
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import FanLogin from './Components/FanLoginComponent';
+import OrganizerLogin from './Components/OrganizerLoginComponent';
+import FanEvents from './Components/FanEventsComponent';
+import FanEvent from './Components/FanEventComponent';
+
+
+class App extends React.Component {
+
+  render() {
+
+    return (
+      <div className="h-100">
+          <>
+              <Router>
+                <Switch>
+                  {/* Public routes */}
+                <Route exact path="/" component={FanLogin} />
+                <Route exact path="/organizer/login" component={OrganizerLogin} />
+                <Route exact path="/fan/events" component={FanEvents} />
+                <Route exact path="/fan/events/:id" component={FanEvent} />
+
+                <Redirect to="/" />
+                </Switch>
+              </Router>
+          </>
+      </div>
+    );
+  }
 }
-
 export default App;

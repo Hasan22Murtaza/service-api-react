@@ -42,12 +42,14 @@ const usePostPassword = (props) => {
   });
 
   useEffect(() => {
+    let ignore = false;
     if (props) {
       dispatch({ type: 'LOADING'});
       const apiCall = async () => {
         await apiLogin
           .post('/login' , {phoneNumber: props.phoneNumber, password: props.password})  
           .then(res => {
+            if (!ignore)
             setLogin(res.data.token)
             setMagic(res.data.magic)
             setPhone(res.data.phoneNumber)
@@ -59,10 +61,11 @@ const usePostPassword = (props) => {
           })
       };
       apiCall();
+      return () => { ignore = true };
     }
   }, [props]);
 
-  return [state]
+  return state
 }
 
 const useLoginOrganizer = () => {
