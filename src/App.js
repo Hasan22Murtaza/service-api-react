@@ -12,6 +12,9 @@ import OrganizerLogin from './Components/OrganizerLoginComponent';
 import FanEvents from './Components/FanEventsComponent';
 import FanEvent from './Components/FanEventComponent';
 
+import Vanues from './Components/VanuesComponent';
+import Vanue from './Components/VanueComponent';
+
 import EventsList from './Components/Organizer/EventsListComponent';
 import EventDetail from './Components/Organizer/EventDetailComponent';
 
@@ -32,6 +35,10 @@ class App extends React.Component {
                 {/* FanEvents routes */}
                 <Route exact path="/fan/events" component={FanEvents} />
                 <Route exact path="/fan/events/:id" component={FanEvent} />
+
+                <Route exact path="/fan/vanues/" component={Vanues} />
+
+                <Route exact path="/fan/vanues/:id" component={Vanue} />
 
                 {/* Organizer routes */}
                 <Route exact path="/organizer/events" component={EventsList} />

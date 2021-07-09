@@ -127,6 +127,57 @@ export const eventReducer = (state, action) => {
   }
 };
 
+
+export const vanuesReducer = (state, action) => {
+  switch (action.type) {
+    case 'LOADING':
+      return {
+        ...state,
+        loading: true,
+        error: false
+      };
+    case 'SUCCESS':
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        data: action.data,
+      };
+    case 'ERROR':
+      return {
+        ...state,
+        loading: false,
+        error: true,
+      };
+    default:
+      throw new Error();
+  }
+};
+export const vanueReducer = (state, action) => {
+  switch (action.type) {
+    case 'LOADING':
+      return {
+        ...state,
+        loading: true,
+        error: false
+      };
+    case 'SUCCESS':
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        data: action.data,
+      };
+    case 'ERROR':
+      return {
+        ...state,
+        loading: false,
+        error: true,
+      };
+    default:
+      throw new Error();
+  }
+};
 export const checkinReducer = (state, action) => {
   switch (action.type) {
     case 'LOADING':
