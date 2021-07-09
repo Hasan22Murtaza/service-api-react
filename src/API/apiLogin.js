@@ -35,11 +35,8 @@ const usePostPhone = ({phoneNumber}) => {
 }
 
 const usePostPassword = (props) => {
-  const [state, dispatch] = useReducer(fanLoginReducer, {
-    loading: false,
-    error: false,
-    data: null,
-  });
+  console.log("props", props);
+  const [state, dispatch] = useReducer(fanLoginReducer, {});
 
   useEffect(() => {
     let ignore = false;

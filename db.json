@@ -1,0 +1,8 @@
+{
+    "login" : [
+        {
+            "email": "admin@example.com",
+            "password" : "abcd0011"
+        }
+    ]
+}

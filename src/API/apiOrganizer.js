@@ -1,9 +1,10 @@
 import { useState, useEffect, useReducer } from 'react';
 
 import axios from 'axios';
-import { apiOrganizer } from './axios';
-import { checkinReducer, apiReducer, imageReducer } from '../Reducers/reducers';
+import { apiOrganizer, apiPosts } from './axios';
+import { checkinReducer, apiReducer, imageReducer, eventsReducer, eventReducer } from '../Reducers/reducers';
 
+// hold
 export const useCheckin = (initialSettings) => {
   const [state, dispatch] = useReducer(checkinReducer, {
     loading: false,
@@ -33,6 +34,68 @@ export const useCheckin = (initialSettings) => {
   }, [payload]);
 
   return [state, setPayload]
+}
+
+// done
+export const useGetEvents = (initialState) => {
+  const [state, dispatch] = useReducer(eventsReducer, {
+    loading: false,
+    error: false,
+    data: [],
+  });
+  const [payload, setPayload] = useState(initialState);
+
+  useEffect(() => {
+    let ignore = false;
+    dispatch({ type: 'LOADING'});
+    const getSocial = async () => {
+      await apiPosts({
+        "method": "GET",
+        "url" : "/posts"
+      })
+      .then(res => {
+        if (!ignore) dispatch({ type: 'SUCCESS', data: res.data });
+        console.log(res);
+      })
+      .catch(err => {
+        dispatch({ type: 'ERROR', message: err.message});
+        console.log(err);
+      })
+    };
+    getSocial();
+    return () => { ignore = true };
+  }, [payload]);
+  return state
+}
+// done
+export const useGetEvent = (initialState) => {
+  const [state, dispatch] = useReducer(eventReducer, {
+    loading: false,
+    error: false,
+    data: null,
+  });
+  //{eventId: eventId}
+  const [eventId, setEventId] = useState(initialState);
+  console.log("payload", eventId);
+  useEffect(() => {
+    let ignore = false;
+    dispatch({ type: 'LOADING'});
+    const getEvent = async () => {
+      await apiPosts({
+        "method": "GET",
+        "url" : "/posts/"+eventId
+      }).then(res => {
+        if (!ignore) dispatch({ type: 'SUCCESS', data: res.data });
+      })
+      .catch(err => {
+        dispatch({ type: 'ERROR'});
+        console.log(err);
+      })
+    };
+    getEvent();
+    return () => { ignore = true };
+  }, [eventId]);
+  return state
 }
 
 export const useCreateEvent = () => {
@@ -108,31 +171,7 @@ export const useUploadImage = () => {
   return [state, setFile]
 }
 
-export const useGetEvents = () => {
-  const [state, dispatch] = useReducer(apiReducer, {
-    loading: false,
-    error: false,
-    data: null,
-  });
 
-  useEffect(() => {
-    dispatch({ type: 'LOADING'});
-    const get = async () => {
-      await apiOrganizer
-        .get('/event')
-        .then(res => {
-          dispatch({ type: 'SUCCESS', data: res.data });
-        })
-        .catch(err => {
-          dispatch({ type: 'ERROR'});
-          console.log(err);
-        })
-    };
-    get();
-  }, []);
-
-  return [state]
-}
 
 export const useGetSettings = (initialState) => {
   const [state, dispatch] = useReducer(apiReducer, {

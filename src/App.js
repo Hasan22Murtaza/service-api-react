@@ -8,8 +8,12 @@ import {
 
 import FanLogin from './Components/FanLoginComponent';
 import OrganizerLogin from './Components/OrganizerLoginComponent';
+
 import FanEvents from './Components/FanEventsComponent';
 import FanEvent from './Components/FanEventComponent';
+
+import EventsList from './Components/Organizer/EventsListComponent';
+import EventDetail from './Components/Organizer/EventDetailComponent';
 
 
 class App extends React.Component {
@@ -24,8 +28,14 @@ class App extends React.Component {
                   {/* Public routes */}
                 <Route exact path="/" component={FanLogin} />
                 <Route exact path="/organizer/login" component={OrganizerLogin} />
+
+                {/* FanEvents routes */}
                 <Route exact path="/fan/events" component={FanEvents} />
                 <Route exact path="/fan/events/:id" component={FanEvent} />
+
+                {/* Organizer routes */}
+                <Route exact path="/organizer/events" component={EventsList} />
+                <Route exact path="/organizer/events/:id" component={EventDetail} />
 
                 <Redirect to="/" />
                 </Switch>
