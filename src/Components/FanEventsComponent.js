@@ -46,7 +46,8 @@ const FanEvents = ({}) => {
 
     <section className="pc-container">
     <div className="pcoded-content">
-        
+   {loading &&  <img src="/dark-loader.gif" style={{marginLeft: "500px",
+    marginTop: "150px"}} />}
         <div className="row">
             <div className="col-xl-12 col-lg-12 filter-bar">
                 
@@ -63,26 +64,9 @@ const FanEvents = ({}) => {
                                 <div className="row">
                                     <div className="col-sm-12">
                                         <p className="task-detail">{ data?.body }</p>
-                                        <p className="task-due"><a href="" className="text-secondary bold"> Tasks : 23</a></p>
-                                        <p className="task-due"><a href="" className="text-secondary bold"> Issues : 23</a></p>
-                                        <p className="task-due"><a href="" className="text-secondary bold"> Discusssions : 23</a></p>
-                                    </div>
-                                </div>
-                                <hr />
-                                <div className="task-list-table">
-                                    <a href="#!"><img className="img-fluid img-radius m-r-5" src="/assets/static/theme/images/user/avatar-2.jpg" alt="1" /></a>
-                                    <a href="#!"><img className="img-fluid img-radius m-r-5" src="/assets/static/theme/images/user/avatar-1.jpg" alt="1" /></a>
-                                    <a href="#!" 
-                                        data-toggle="modal" data-target="#team-member-modal"
-                                    ><i className="fas fa-plus"></i></a>
-                                </div>
-                                <div className="task-board">
-                                    <div className="dropdown-secondary dropdown">
-                                        <button className="btn waves-effect waves-light btn-primary btn-sm dropdown-toggle b-none txt-muted" type="button" id="dropdown3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
-                                                className="fas fa-bars"></i></button>
-                                        <div className="dropdown-menu" aria-labelledby="dropdown3" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-                                            <a className="dropdown-item" href="#!">Archive</a>
-                                        </div>
+                                        <p className="task-due"><a href="" className="text-secondary bold"> Start Date : 23</a></p>
+                                        <p className="task-due"><a href="" className="text-secondary bold"> End Date : 23</a></p>
+                                        <p className="task-due"><a href="" className="text-secondary bold"> Location : 23</a></p>
                                     </div>
                                 </div>
                             </div>

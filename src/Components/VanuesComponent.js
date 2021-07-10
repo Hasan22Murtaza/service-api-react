@@ -46,7 +46,8 @@ const Vanues = ({}) => {
 
     <section className="pc-container">
     <div className="pcoded-content">
-        
+    {loading &&  <img src="/dark-loader.gif" style={{marginLeft: "500px",
+    marginTop: "150px"}} />}
         <div className="row">
             <div className="col-xl-12 col-lg-12 filter-bar">
                 
@@ -74,10 +75,10 @@ const Vanues = ({}) => {
                                 </div>
                                 <div className="task-board">
                                 <span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star"></span>
-<span class="fa fa-star"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
                                 </div>
                             </div>
                         </div>

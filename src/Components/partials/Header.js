@@ -15,9 +15,9 @@ class Sidebar extends Component {
 						</Link>
 					</li>
 					<li className="dropdown pc-h-item">
-						<a className="pc-head-link active dropdown-toggle arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-							Tasks
-						</a>
+					<Link to="/fan/vanues" className="pc-head-link active dropdown-toggle arrow-none mr-0">
+							Vanues
+						</Link>
 					</li>
 					<li className="dropdown pc-h-item">
 						<a className="pc-head-link active dropdown-toggle arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">

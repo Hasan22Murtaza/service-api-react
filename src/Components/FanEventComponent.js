@@ -47,7 +47,8 @@ const FanEvent = (props) => {
 
     <section className="pc-container">
     <div className="pcoded-content">
-        
+    {loading &&  <img src="/dark-loader.gif" style={{marginLeft: "500px",
+    marginTop: "150px"}} />}
         <div className="row">
             <div className="col-xl-12 col-lg-12 filter-bar">
               <div className="card">

@@ -1,10 +1,7 @@
 import { useState, useEffect, useReducer } from 'react';
 
 import { eventsReducer, eventReducer } from '../Reducers/reducers';
-import { apiSite, apiPosts } from './axios';
-
-
-
+import { apiPosts } from './axios';
 
 
 export const useGetEvents = (initialState) => {
@@ -22,10 +19,11 @@ export const useGetEvents = (initialState) => {
     const getSocial = async () => {
       await apiPosts({
         "method": "GET",
-        "url" : "/posts"
+        "url" : "/events"
       })
       .then(res => {
-        if (!ignore) dispatch({ type: 'SUCCESS', data: res.data });
+        if (!ignore) 
+        dispatch({ type: 'SUCCESS', data: res.data });
         console.log(res);
       })
       .catch(err => {
@@ -54,7 +52,7 @@ export const useGetEvent = (initialState) => {
     const getEvent = async () => {
       await apiPosts({
         "method": "GET",
-        "url" : "/posts/"+eventId
+        "url" : "/events/"+eventId
       }).then(res => {
         if (!ignore) dispatch({ type: 'SUCCESS', data: res.data });
       })

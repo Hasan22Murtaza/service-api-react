@@ -13,7 +13,7 @@ class Sidebar extends Component {
 				</a>
 			</div>
 			<div className="navbar-content">
-				<ul className="pc-navbar">
+				<ul className="pc-navbar" style={{display:'none' }}>
                     <li className="pc-item pc-caption">
                         <label>Navigation</label>
                     </li>
@@ -66,7 +66,7 @@ class Sidebar extends Component {
 	</nav>
 
 
-	<nav className="pc-sidebar ">
+	<nav className="pc-sidebar " style={{display:'none' }}>
 		<div className="navbar-wrapper">
 			<div className="m-header">
 				<a href="index.html" className="b-brand">

@@ -51,7 +51,7 @@ export const useGetEvents = (initialState) => {
     const getSocial = async () => {
       await apiPosts({
         "method": "GET",
-        "url" : "/posts"
+        "url" : "/events"
       })
       .then(res => {
         if (!ignore) dispatch({ type: 'SUCCESS', data: res.data });
@@ -67,7 +67,7 @@ export const useGetEvents = (initialState) => {
   }, [payload]);
   return state
 }
-// done
+// 
 export const useGetEvent = (initialState) => {
   const [state, dispatch] = useReducer(eventReducer, {
     loading: false,
@@ -83,7 +83,7 @@ export const useGetEvent = (initialState) => {
     const getEvent = async () => {
       await apiPosts({
         "method": "GET",
-        "url" : "/posts/"+eventId
+        "url" : "/events/"+eventId
       }).then(res => {
         if (!ignore) dispatch({ type: 'SUCCESS', data: res.data });
       })
