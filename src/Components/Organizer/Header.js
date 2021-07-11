@@ -33,8 +33,8 @@ class Header extends Component {
 						</Link>
 					</li>
 					<li className="dropdown pc-h-item">
-					<Link to="/organizer/vanues" className="pc-head-link active dropdown-toggle arrow-none mr-0">
-							Vanues
+					<Link to="/organizer/employees" className="pc-head-link active dropdown-toggle arrow-none mr-0">
+							Employees
 						</Link>
 					</li>
 					
@@ -69,10 +69,7 @@ class Header extends Component {
 							<div className=" dropdown-header">
 								<h6 className="text-overflow m-0">Welcome !</h6>
 							</div>
-							<Link href="#!" to={"/fan/profile"} className="dropdown-item">
-											<i data-feather="user"></i>
-											<span>My Account</span>
-										</Link>
+							
                             <Link href="#!" to={"/organizer/setting"} className="dropdown-item">
 											<i data-feather="user"></i>
 											<span>Setting</span>

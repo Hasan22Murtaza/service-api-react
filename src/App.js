@@ -21,7 +21,7 @@ import Vanue from './Components/VanueComponent';
 import EventsList from './Components/Organizer/EventsListComponent';
 import EventDetail from './Components/Organizer/EventDetailComponent';
 import OrganizerSetting from './Components/Organizer/SettingComponent';
-
+import OrganizerEmployees from './Components/Organizer/EmployeesComponent';
 
 class App extends React.Component {
 
@@ -50,6 +50,7 @@ class App extends React.Component {
                 <OrgAuthGuard exact path="/organizer/events" component={EventsList} />
                 <OrgAuthGuard exact path="/organizer/events/:id" component={EventDetail} />
                 <OrgAuthGuard exact path="/organizer/setting" component={OrganizerSetting} />
+                <OrgAuthGuard exact path="/organizer/employees" component={OrganizerEmployees} />
                 <Redirect to="/" />
                 </Switch>
               </Router>

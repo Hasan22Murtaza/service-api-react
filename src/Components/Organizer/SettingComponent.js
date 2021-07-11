@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Header from '../../Components/Organizer/Header'
 import Sidebar from '../../Components/partials/Sidebar'
 import { useGetSetting } from "../../API/apiOrganizer";

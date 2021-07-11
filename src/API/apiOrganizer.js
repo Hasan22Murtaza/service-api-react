@@ -1,7 +1,7 @@
 import { useState, useEffect, useReducer } from 'react';
 
 import { apiCall } from './axios';
-import { orgEventsReducer, orgEventReducer, orgSettingReducer } from '../Reducers/reducers';
+import { orgEventsReducer, orgEventReducer, orgSettingReducer, orgEmployeesReducer } from '../Reducers/reducers';
 
 
 
@@ -97,7 +97,36 @@ export const useGetSetting = (initialState) => {
 }
 
 
+export const useGetEmpolyees = (initialState) => {
+  const [state, dispatch] = useReducer(orgEventsReducer, {
+    loading: false,
+    error: false,
+    data: [],
+  });
+  const [payload, setPayload] = useState(initialState);
 
+  useEffect(() => {
+    let ignore = false;
+    dispatch({ type: 'LOADING'});
+    const getEmployees = async () => {
+      await apiCall({
+        "method": "GET",
+        "url" : "/employees"
+      })
+      .then(res => {
+        if (!ignore) dispatch({ type: 'SUCCESS', data: res.data });
+        console.log(res);
+      })
+      .catch(err => {
+        dispatch({ type: 'ERROR', message: err.message});
+        console.log(err);
+      })
+    };
+    getEmployees();
+    return () => { ignore = true };
+  }, [payload]);
+  return state
+}
 
 
 
