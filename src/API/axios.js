@@ -3,9 +3,11 @@ import { getToken } from '../Storage/Login';
 import { getOrganizer } from '../Storage/Organizer';
 
 
-const apiPosts = axios.create({
+
+const apiCall = axios.create({
   baseURL: " http://localhost:8000"
 })
+
 
 const apiLogin = axios.create({
   baseURL: "https://" + process.env.REACT_APP_BASE_URL + process.env.REACT_APP_API_LOGIN,
@@ -44,4 +46,4 @@ const apiSite = axios.create({
   } 
 })
 
-export {apiLogin, apiPosts , apiData, apiOrganizer, apiSite};
+export {apiLogin , apiData, apiOrganizer, apiSite, apiCall};

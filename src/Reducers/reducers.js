@@ -50,31 +50,7 @@ export const fanProfileReducer = (state, action) => {
   }
 };
 
-export const socialReducer = (state, action) => {
-  switch (action.type) {
-    case 'LOADING':
-      return {
-        ...state,
-        loading: true,
-        error: false
-      };
-    case 'SUCCESS':
-      return {
-        ...state,
-        loading: false,
-        error: false,
-        data: action.data,
-      };
-    case 'ERROR':
-      return {
-        ...state,
-        loading: false,
-        error: action.reason
-      };
-    default:
-      throw new Error();
-  }
-};
+
 
 export const eventsReducer = (state, action) => {
   switch (action.type) {
@@ -102,6 +78,33 @@ export const eventsReducer = (state, action) => {
   }
 };
 export const eventReducer = (state, action) => {
+  switch (action.type) {
+    case 'LOADING':
+      return {
+        ...state,
+        loading: true,
+        error: false
+      };
+    case 'SUCCESS':
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        data: action.data,
+      };
+    case 'ERROR':
+      return {
+        ...state,
+        loading: false,
+        error: true,
+      };
+    default:
+      throw new Error();
+  }
+};
+
+
+export const profileReducer = (state, action) => {
   switch (action.type) {
     case 'LOADING':
       return {
@@ -178,31 +181,7 @@ export const vanueReducer = (state, action) => {
       throw new Error();
   }
 };
-export const checkinReducer = (state, action) => {
-  switch (action.type) {
-    case 'LOADING':
-      return {
-        ...state,
-        loading: true,
-        error: false
-      };
-    case 'SUCCESS':
-      return {
-        ...state,
-        loading: false,
-        error: false,
-        data: action.data,
-      };
-    case 'ERROR':
-      return {
-        ...state,
-        loading: false,
-        error: true,
-      };
-    default:
-      throw new Error();
-  }
-};
+
 
 export const fanLoginReducer = (state, action) => {
   switch (action.type) {
@@ -256,7 +235,7 @@ export const organizerLoginReducer = (state, action) => {
   }
 };
 
-export const apiReducer = (state, action) => {
+export const orgSettingReducer = (state, action) => {
   switch (action.type) {
     case 'LOADING':
       return {
@@ -282,7 +261,7 @@ export const apiReducer = (state, action) => {
   }
 };
 
-export const imageReducer = (state, action) => {
+export const orgEventsReducer = (state, action) => {
   switch (action.type) {
     case 'LOADING':
       return {
@@ -290,18 +269,37 @@ export const imageReducer = (state, action) => {
         loading: true,
         error: false
       };
-    case 'DATA':
+    case 'SUCCESS':
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        data: action.data,
+      };
+    case 'ERROR':
+      return {
+        ...state,
+        loading: false,
+        error: true,
+      };
+    default:
+      throw new Error();
+  }
+};
+export const orgEventReducer = (state, action) => {
+  switch (action.type) {
+    case 'LOADING':
       return {
         ...state,
         loading: true,
-        error: false,
-        data: action.data,
+        error: false
       };
     case 'SUCCESS':
       return {
         ...state,
         loading: false,
-        error: false
+        error: false,
+        data: action.data,
       };
     case 'ERROR':
       return {

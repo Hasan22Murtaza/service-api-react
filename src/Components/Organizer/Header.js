@@ -18,7 +18,7 @@ class Header extends Component {
 
     render() {
 		if (this.state.redirect) {
-			return <Redirect push to="/" />;
+			return <Redirect push to="/organizer/login" />;
 		}
 
         return (
@@ -28,12 +28,12 @@ class Header extends Component {
 			<div className="mr-auto pc-mob-drp">
 				<ul className="list-unstyled">
 					<li className="dropdown pc-h-item">
-						<Link to="/fan/events" className="pc-head-link active dropdown-toggle arrow-none mr-0">
+						<Link to="/organizer/events" className="pc-head-link active dropdown-toggle arrow-none mr-0">
 							Events List
 						</Link>
 					</li>
 					<li className="dropdown pc-h-item">
-					<Link to="/fan/vanues" className="pc-head-link active dropdown-toggle arrow-none mr-0">
+					<Link to="/organizer/vanues" className="pc-head-link active dropdown-toggle arrow-none mr-0">
 							Vanues
 						</Link>
 					</li>
@@ -61,8 +61,8 @@ class Header extends Component {
 						<a className="pc-head-link dropdown-toggle arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
 							<img src="/assets/static/theme/images/user/avatar-2.jpg" alt="user-image" className="user-avtar" />
 							<span>
-								<span className="user-name">Joseph William</span>
-								<span className="user-desc">Fan</span>
+								<span className="user-name">Hasan Murtaza</span>
+								<span className="user-desc">Organizer</span>
 							</span>
 						</a>
 						<div className="dropdown-menu dropdown-menu-right pc-h-dropdown">
@@ -71,9 +71,12 @@ class Header extends Component {
 							</div>
 							<Link href="#!" to={"/fan/profile"} className="dropdown-item">
 											<i data-feather="user"></i>
-											<span>Profile</span>
+											<span>My Account</span>
 										</Link>
-							
+                            <Link href="#!" to={"/organizer/setting"} className="dropdown-item">
+											<i data-feather="user"></i>
+											<span>Setting</span>
+						    </Link>
 							<a href="#!" onClick={() => this.Logout()} className="dropdown-item">
 								<i data-feather="power"></i>
 								<span>Logout</span>

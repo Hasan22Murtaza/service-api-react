@@ -53,7 +53,7 @@ const FanEvent = (props) => {
             <div className="col-xl-12 col-lg-12 filter-bar">
               <div className="card">
                 <div className="card-header">
-                  Featured
+                  EVent Detail
                 </div>
                 <div className="card-body">
                   <h5 className="card-title">{ data?.title }</h5>

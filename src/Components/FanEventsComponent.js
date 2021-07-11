@@ -55,22 +55,23 @@ const FanEvents = ({}) => {
                    {data.map((data, index) => {
                        return (
                         <div className="col-md-4 col-sm-6 col-xs-12" key={index}>
+                        <Link to={'/fan/events/'+data.id}>
                         <div className="card card-border-c-blue">
                             <div className="card-header">
-                            <Link to={'/fan/events/'+ data.id} className="text-secondary">#{data?.id}. {data?.title ? data?.title : ''} </Link>
-                                <span className="label label-primary float-right">Last Update: 28 January, 2015 </span>
+                            <Link to={'/fan/events/'+ data.id} className="text-secondary" style={{textTransform: 'capitalize', fontWeight:"bold", color:"lightblue"}}>{data?.title ? data?.title : ''} </Link>
                             </div>
                             <div className="card-body card-task">
                                 <div className="row">
                                     <div className="col-sm-12">
                                         <p className="task-detail">{ data?.body }</p>
-                                        <p className="task-due"><a href="" className="text-secondary bold"> Start Date : 23</a></p>
-                                        <p className="task-due"><a href="" className="text-secondary bold"> End Date : 23</a></p>
-                                        <p className="task-due"><a href="" className="text-secondary bold"> Location : 23</a></p>
+                                        <p className="task-due"><a href="" className="text-secondary bold"> Start Date : { data?.start_date ? data?.start_date : "N\A" }</a></p>
+                                        <p className="task-due"><a href="" className="text-secondary bold"> End Date : { data?.end_date ? data?.end_date : "N\A" }</a></p>
+                                        <p className="task-due"><a href="" className="text-secondary bold"> Location : { data?.location ? data?.location : "N\A" }</a></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        </Link>
                     </div>
                        )
                    })} 

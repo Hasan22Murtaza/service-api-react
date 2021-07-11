@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useGetEvents } from "../../API/apiOrganizer";
-import Header from '../../Components/partials/Header'
+import Header from '../../Components/Organizer/Header'
 import Sidebar from '../../Components/partials/Sidebar'
 import { Link } from 'react-router-dom';
 
@@ -46,6 +46,8 @@ const EventsList = ({}) => {
 
     <section className="pc-container">
     <div className="pcoded-content">
+    {loading &&  <img src="/dark-loader.gif" style={{marginLeft: "500px",
+    marginTop: "150px"}} />}
     <div class="page-header">
             <div class="page-block">
                 <div class="row align-items-center">

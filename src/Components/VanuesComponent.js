@@ -3,6 +3,7 @@ import { useGetVanues } from "../API/apiVanue";
 import Header from '../Components/partials/Header'
 import Sidebar from '../Components/partials/Sidebar'
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 const Vanues = ({}) => {
     const [params, setParams] = useState({});
@@ -57,29 +58,73 @@ const Vanues = ({}) => {
                         <div className="col-md-4 col-sm-6 col-xs-12" key={index}>
                         <div className="card card-border-c-blue">
                             <div className="card-header">
-                            <Link to={'/fan/vanues/'+ data.id} className="text-secondary">#{data?.id}. {data?.name ? data?.name : ''} </Link>
-                                <span className="label label-primary float-right">Last Update: 28 January, 2015 </span>
+                            <a href="#!" className="text-secondary">#{data?.id}. {data?.name ? data?.name : ''} </a>
+                                <span className="label label-primary float-right">Date: {moment(data.created_at).format("DD MMM YYYY h:mm A")}  </span>
                             </div>
                             <div className="card-body card-task">
                                 <div className="row">
                                     <div className="col-sm-12">
                                         <p className="task-detail">{ data?.body }</p>
-                                        <p className="task-due"><a href="" className="text-secondary bold"> Facebook : 23</a></p>
-                                        <p className="task-due"><a href="" className="text-secondary bold"> Instagram : 23</a></p>
-                                        <p className="task-due"><a href="" className="text-secondary bold"> Twitter : 23</a></p>
+
+                                        <h4>Contact Us</h4>
+                                        <p className="task-due"><a href="#!" className="text-secondary bold"> Phone : { data?.contact?.phone }</a></p>
+                                        <p className="task-due"><a href="#!" className="text-secondary bold"> Facebook : 23</a></p>
+                                        <p className="task-due"><a href="#!" className="text-secondary bold"> Instagram : 23</a></p>
+                                        <p className="task-due"><a href="#!" className="text-secondary bold"> Twitter : 23</a></p>
                                     </div>
                                 </div>
                                 <hr />
-                                <div className="task-list-table">
-                                    Locatons
+                                <div className="task-list-table" title={data?.location?.address}>
+                                    {data?.location?.address?.slice('', 30) }
                                 </div>
+                                {data.rating == 5 && 
+                                <div className="task-board">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                </div>}
+                                {data.rating == 4 && 
+                                <div className="task-board">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                </div>}
+                                {data.rating == 3 && 
                                 <div className="task-board">
                                 <span class="fa fa-star checked"></span>
                                 <span class="fa fa-star checked"></span>
                                 <span class="fa fa-star checked"></span>
                                 <span class="fa fa-star"></span>
                                 <span class="fa fa-star"></span>
-                                </div>
+                                </div>}
+                                {data.rating == 2 && 
+                                <div className="task-board">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                </div>}
+                                {data.rating == 1 && 
+                                <div className="task-board">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                </div>}
+                                {data.rating == 0 && 
+                                <div className="task-board">
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                </div>}
                             </div>
                         </div>
                     </div>

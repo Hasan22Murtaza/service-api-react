@@ -1,7 +1,7 @@
 import { useState, useEffect, useReducer } from 'react';
 
 import { vanuesReducer, vanueReducer } from '../Reducers/reducers';
-import {  apiPosts } from './axios';
+import {  apiCall } from './axios';
 
 
 
@@ -20,7 +20,7 @@ export const useGetVanues = (initialState) => {
     let ignore = false;
     dispatch({ type: 'LOADING'});
     const getSocial = async () => {
-      await apiPosts({
+      await apiCall({
         "method": "GET",
         "url" : "/vanues"
       })
@@ -52,7 +52,7 @@ export const useGetVanue = (initialState) => {
     let ignore = false;
     dispatch({ type: 'LOADING'});
     const getEvent = async () => {
-      await apiPosts({
+      await apiCall({
         "method": "GET",
         "url" : "/vanues/"+vanueId
       }).then(res => {

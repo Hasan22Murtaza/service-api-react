@@ -12,7 +12,16 @@
   height : 20%;
   border : 1px solid black;
 }
+.checked {
+  color: orange;
+}
 
+h1.form-head {
+  font-size: 19px;
+  margin-top: -10px;
+  margin-bottom: 19px;
+  color: #796af8;
+}
 .task-pointer {
   cursor: pointer;
 }

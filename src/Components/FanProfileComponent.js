@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useGetEvent } from "../../API/apiOrganizer";
-import Header from '../../Components/Organizer/Header'
-import Sidebar from '../../Components/partials/Sidebar'
-import { Link } from 'react-router-dom';
+import { useGetProfile } from "../API/apiFanSite";
+import Header from '../Components/partials/Header'
+import Sidebar from '../Components/partials/Sidebar'
+import moment from 'moment';
 
-const EventDetail = (props) => {
-  console.log(props.match.params.id)
-    let Id = props.match.params.id;
-    const [eventId, setEventId] = useState(Id);
-    const { data, loading, error } = useGetEvent(eventId);
+const Profile = () => {
+
+    const { data, loading, error } = useGetProfile({});
+    console.log(data);
 
   return (
     <>
@@ -47,18 +46,20 @@ const EventDetail = (props) => {
 
     <section className="pc-container">
     <div className="pcoded-content">
-    {loading &&  <img src="/dark-loader.gif" style={{marginLeft: "500px",
-    marginTop: "150px"}} />}
+    
         <div className="row">
             <div className="col-xl-12 col-lg-12 filter-bar">
               <div className="card">
                 <div className="card-header">
-                  Featured
+                  Fan Information
                 </div>
                 <div className="card-body">
-                  <h5 className="card-title">{ data?.title }</h5>
-                  <p className="card-text">{ data?.body }</p>
-                  <Link to="/organizer/events"  className="btn btn-primary">Back to events</Link>
+                    <p><span style={{fontWeight:"bold"}}>Name</span> { data?.first_name } { data?.last_name }</p><br/>
+                    <p><span style={{fontWeight:"bold"}}>Email</span> { data?.email }</p><br/>
+                    <p><span style={{fontWeight:"bold"}}>Phone</span> { data?.phone }</p><br/>
+                    <p><span style={{fontWeight:"bold"}}>Gender</span> { data?.gender }</p><br/>
+                    <p><span style={{fontWeight:"bold"}}>Date Of Birth</span> {moment(data?.dob).format("DD MMM YYYY h:mm A")}</p><br/>
+
                 </div>
               </div>
 
@@ -71,4 +72,4 @@ const EventDetail = (props) => {
 };
 
 
-export default EventDetail;
+export default Profile;
