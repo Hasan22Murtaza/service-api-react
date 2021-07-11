@@ -1,32 +1,40 @@
-import React, { useState, useEffect } from 'react';
-import { Redirect } from "react-router-dom";
+import React, { useState } from 'react';
+import { setLogin, setMagic, setPhone, setType } from '../Storage/Login';
 
-const FanLgin = () => {
+const FanLgin = props => {
 
 	const [formData, setFormData] = useState({
 		phone: "",
 		password: "",
 	  });
-	  const [submitted, setSubmitted] = useState(false);
 
 	  const onChange = e => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
 	  };
 
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
-  
-      setSubmitted(true)
-  
-  }
-  if (submitted) {
-    return <Redirect push to={{
-      pathname: '/fan/events',
-    }}
-    />
-  }  
-        return (
+	  function handleSubmit(e) {
+		e.preventDefault();
+		let randomToken = Math.random().toString(36).substring(7);
+		if(formData.phone == "+12025550128" && formData.password == "abcd0011") {
+			setType('fanuser');
+			setLogin(randomToken);
+			setMagic('jkdf');
+			props.history.push("/fan/events");
+		} else if(formData.phone == "+12025550190" && formData.password == "abcd0011") {
+			setType('fanuser');
+			setLogin(randomToken);
+			setMagic('jkdf');
+			props.history.push("/fan/events");
+		}else {
+			alert("something went wrong");
+			localStorage.clear();
+			props.history.push("/");
+		}
+		
+	  }
+
+     return (
             <div>
             <div className="auth-wrapper align-items-stretch aut-bg-img">
 					<div className="flex-grow-1">
@@ -55,12 +63,7 @@ const FanLgin = () => {
 										<input type="password" className="form-control" placeholder="Password" name="password" onChange={e => onChange(e)} />
 										
 									</div>
-									<div className="form-group text-left mt-2" style={{ display : 'none'}}>
-										<div className="custom-control custom-checkbox">
-											<input type="checkbox" className="custom-control-input input-primary" id="customCheckdefh2" />
-											<label className="custom-control-label" htmlFor="customCheckdefh2">Remeber Me.</label>
-										</div>
-									</div>
+									
 									<button  type="submit" className="btn btn-block btn-primary mb-0">Signin</button>
 								</form>
 

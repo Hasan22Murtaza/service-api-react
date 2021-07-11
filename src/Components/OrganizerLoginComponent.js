@@ -1,11 +1,36 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { setOrganizerLogin } from '../Storage/Organizer';
 
-class OrganizerLogin extends Component {
- 
+const OrganizerLogin = props => {
 
-    render() {
-        return (
+	const [formData, setFormData] = useState({
+		accountId: "",
+		password: "",
+	  });
+
+	  const onChange = e => {
+		setFormData({ ...formData, [e.target.name]: e.target.value });
+	  };
+
+
+	  function handleSubmit(e) {
+		e.preventDefault();
+		let randomToken = Math.random().toString(36).substring(7);
+		if(formData.accountId == "12drossli55" && formData.password == "abcd0011") {
+			setOrganizerLogin(randomToken);
+			props.history.push("/organizer/events");
+		} else if(formData.accountId == "342hasa2211" && formData.password == "abcd0011") {
+			setOrganizerLogin(randomToken);
+			props.history.push("/organizer/events");
+		}else {
+			alert("something went wrong");
+			localStorage.clear();
+			props.history.push("/organizer/login");
+		}
+		
+	  }
+
+     return (
             <div>
             <div className="auth-wrapper align-items-stretch aut-bg-img">
 					<div className="flex-grow-1">
@@ -19,27 +44,23 @@ class OrganizerLogin extends Component {
 						<div className="auth-side-form">
 							<div className=" auth-content">
 								<img src="/assets/static/theme/images/auth/auth-logo-dark.svg" alt="" className="img-fluid mb-4 d-block d-xl-none d-lg-none" />
-								<h3 className="mb-4 f-w-400">Organizer Signin</h3>
-								<form onSubmit={this.handleSubmit}>
+								<h3 className="mb-4 f-w-400">Organizer Login</h3>
+								<form onSubmit={handleSubmit}>
 									<div className="input-group mb-3">
 										<div className="input-group-prepend">
 											<span className="input-group-text"><i className="fal fa-phone"></i></span>
 										</div>
-										<input type="email" className="form-control" name="email" placeholder="Enter Your Phone Number" />
+										<input type="text" className="form-control" name="accountId" placeholder="Enter Your Account ID" onChange={e => onChange(e)} />
 									</div>
 									<div className="input-group mb-4">
 										<div className="input-group-prepend">
 											<span className="input-group-text"><i className="fal fa-lock-alt"></i></span>
 										</div>
-										<input type="password" className="form-control" placeholder="Password" name="password" />
+										<input type="password" className="form-control" placeholder="Password" name="password" onChange={e => onChange(e)} />
+										
 									</div>
-									<div className="form-group text-left mt-2" style={{ display : 'none'}}>
-										<div className="custom-control custom-checkbox">
-											<input type="checkbox" className="custom-control-input input-primary" id="customCheckdefh2" />
-											<label className="custom-control-label" htmlFor="customCheckdefh2">Remeber Me.</label>
-										</div>
-									</div>
-									<button type="submit" className="btn btn-block btn-primary mb-0">Signin</button>
+									
+									<button  type="submit" className="btn btn-block btn-primary mb-0">Signin</button>
 								</form>
 
 								
@@ -51,7 +72,6 @@ class OrganizerLogin extends Component {
                  
         </div>
         )
-    }
 }
 
 export default OrganizerLogin

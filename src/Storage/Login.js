@@ -1,37 +1,42 @@
 const TOKEN_KEY = 'jwt';
 const PHONE_NUMBER = 'phoneNumber';
 const MAGIC = 'magic';
+const TYPE = "user_type";
 
 export const setPhone = (token) => {
-  sessionStorage.setItem(PHONE_NUMBER, token);
+  localStorage.setItem(PHONE_NUMBER, token);
 }
 
 export const getPhone = () => {
-  return sessionStorage.getItem(PHONE_NUMBER);
+  return localStorage.getItem(PHONE_NUMBER);
 }
 
 export const setMagic = (token) => {
-  sessionStorage.setItem(MAGIC, token);
+  localStorage.setItem(MAGIC, token);
 }
 
 export const getMagic = () => {
-  return sessionStorage.getItem(MAGIC);
+  return localStorage.getItem(MAGIC);
 }
 
 export const setLogin = (token) => {
-  sessionStorage.setItem(TOKEN_KEY, token);
+  localStorage.setItem(TOKEN_KEY, token);
+}
+
+export const setType = (type) => {
+  localStorage.setItem(TYPE, type);
 }
 
 export const setLogout = () => {
-  sessionStorage.removeItem(TOKEN_KEY);
+  localStorage.removeItem(TOKEN_KEY);
 }
 
 export const getToken = () => {
-  return sessionStorage.getItem(TOKEN_KEY);
+  return localStorage.getItem(TOKEN_KEY);
 }
 
 export const isLogin = () => {
-  if (sessionStorage.getItem(TOKEN_KEY)) {
+  if (localStorage.getItem(TOKEN_KEY)) {
     return true;
   }
   return false;

@@ -6,6 +6,8 @@ import {
   Redirect
 } from 'react-router-dom';
 import { FanAuthGuard } from "./FanAuthGuard";
+import { OrgAuthGuard } from "./OrgAuthGuard";
+
 import FanLogin from './Components/FanLoginComponent';
 import OrganizerLogin from './Components/OrganizerLoginComponent';
 
@@ -45,9 +47,9 @@ class App extends React.Component {
                 <FanAuthGuard exact path="/fan/profile" component={Profile} />
 
                 {/* Organizer routes */}
-                <Route exact path="/organizer/events" component={EventsList} />
-                <Route exact path="/organizer/events/:id" component={EventDetail} />
-                <Route exact path="/organizer/setting" component={OrganizerSetting} />
+                <OrgAuthGuard exact path="/organizer/events" component={EventsList} />
+                <OrgAuthGuard exact path="/organizer/events/:id" component={EventDetail} />
+                <OrgAuthGuard exact path="/organizer/setting" component={OrganizerSetting} />
                 <Redirect to="/" />
                 </Switch>
               </Router>
